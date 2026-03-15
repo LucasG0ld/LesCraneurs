@@ -100,6 +100,8 @@ const articles = [
   },
 ]
 
+const withBase = (assetPath) => `${import.meta.env.BASE_URL}${assetPath.replace(/^\/+/, '')}`
+
 function App() {
   const [isFloatingNav, setIsFloatingNav] = useState(false)
 
@@ -157,7 +159,7 @@ function App() {
               <a className={`font-rubik font-normal transition-all ${isFloatingNav ? 'text-xs md:text-sm' : 'text-sm md:text-base'}`}>Le Gang</a>
             </div>
             <img
-              src="/Agence_Voyage_Logo_Entreprise_Marque_Identite_Rose_Rouge-removebg-preview.webp"
+              src={withBase('/Agence_Voyage_Logo_Entreprise_Marque_Identite_Rose_Rouge-removebg-preview.webp')}
               alt="Les Crâneurs"
               className={`object-contain transition-all ${isFloatingNav ? 'h-[56px] w-[56px] md:h-[72px] md:w-[72px]' : 'h-[72px] w-[72px] md:h-[108px] md:w-[108px]'}`}
             />
@@ -183,7 +185,7 @@ function App() {
       <section
         className="relative min-h-[100dvh] overflow-hidden bg-[#8f8f8f]"
         style={{
-          backgroundImage: "url('/image 24.webp')",
+          backgroundImage: `url('${withBase('/image 24.webp')}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -388,7 +390,7 @@ function App() {
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:flex md:flex-wrap md:justify-between">
             {products.map((product, index) => (
               <article key={product.name} className="w-full rounded-2xl border border-anthracite/10 bg-white p-3 md:w-[24%]">
-                <img src={product.image} alt={product.name} className="h-52 w-full rounded-xl object-cover" />
+                <img src={withBase(product.image)} alt={product.name} className="h-52 w-full rounded-xl object-cover" />
                 <p className="mt-4 font-rubik text-[10px] uppercase tracking-[0.18em] text-anthracite/45">{product.category}</p>
                 <h3 className="min-h-[48px] font-cormorant text-[30px] leading-[1.05] text-anthracite">{product.name}</h3>
                 <div className="mt-2 flex items-center justify-between pb-[15px]">
@@ -411,7 +413,7 @@ function App() {
         <div className="mx-auto flex max-w-[1260px] flex-col gap-8 md:items-center md:flex-row md:gap-12">
           <div className="flex w-full flex-col gap-[18px] md:h-[704px] md:w-[56%]">
             <div className="relative h-[420px] overflow-hidden rounded-[28px] border border-anthracite/[0.08] bg-sauge md:h-[600px] md:rounded-[36px]">
-              <img src="/harnais.webp" alt="Depuis notre atelier" className="h-full w-full object-cover" />
+              <img src={withBase('/harnais.webp')} alt="Depuis notre atelier" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-b from-black/[0.03] to-black/[0.30]" />
 
               <div className="absolute left-6 top-6 rounded-full bg-sable/90 px-3 py-[9px]">
@@ -514,7 +516,7 @@ function App() {
             <div className="flex snap-x snap-mandatory gap-[18px] overflow-x-auto pb-2 md:overflow-visible md:pb-0">
               {gang.map((item) => (
                 <article key={item.identity} className="flex h-[519px] min-w-[320px] flex-[0_0_320px] snap-start flex-col overflow-hidden rounded-[24px] border border-anthracite/[0.08] bg-white md:w-[408px] md:min-w-0 md:flex-[0_0_408px]">
-                  <img src={item.image} alt={item.identity} className="h-[300px] w-full object-cover" />
+                  <img src={withBase(item.image)} alt={item.identity} className="h-[300px] w-full object-cover" />
                   <div className="flex h-[219px] flex-col gap-[14px] px-5 pb-[18px] pt-5">
                     <div className="flex items-center justify-between">
                       <span className="font-rubik text-[11px] uppercase tracking-[1.4px] text-[#728B75]">
@@ -598,7 +600,7 @@ function App() {
           <div className="flex snap-x snap-mandatory gap-[18px] overflow-x-auto pb-2 md:h-[580px] md:overflow-visible md:pb-0">
             {articles.map((item) => (
               <article key={item.title} className="flex h-[580px] min-w-[320px] flex-[0_0_320px] snap-start flex-col overflow-hidden rounded-[24px] border border-anthracite/[0.08] bg-white md:w-[408px] md:min-w-0 md:flex-[0_0_408px]">
-                <img src={item.image} alt={item.title} className="h-[290px] w-full object-cover" />
+                <img src={withBase(item.image)} alt={item.title} className="h-[290px] w-full object-cover" />
                 <div className="flex h-[290px] flex-col gap-[14px] px-[22px] pb-5 pt-[22px]">
                   <div className="flex items-center gap-2">
                     <span
